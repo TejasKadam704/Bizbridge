@@ -3,6 +3,8 @@ import { Link } from 'react-router-dom'
 import { Facebook, Twitter, Youtube, Linkedin, Mail, Phone, MapPin } from 'lucide-react'
 
 const Footer = ({ accentColor = 'blue' }) => {
+  const normalizedColor = accentColor === 'violet' ? 'purple' : accentColor
+
   const accent = {
     blue: {
       text: 'text-blue-400',
@@ -16,50 +18,36 @@ const Footer = ({ accentColor = 'blue' }) => {
       border: 'border-purple-900',
       bg: 'bg-slate-900',
     },
-  }[accentColor] || {
+    green: {
+      text: 'text-emerald-400',
+      hover: 'hover:text-emerald-400',
+      border: 'border-emerald-900',
+      bg: 'bg-slate-900',
+    },
+  }[normalizedColor] || {
     text: 'text-blue-400',
     hover: 'hover:text-blue-400',
     border: 'border-blue-800',
     bg: 'bg-slate-900',
   }
 
-  {/*const quickLinks = [
-    { label: 'About Us', path: `/${accentColor === 'purple' ? 'c2c' : 'b2b'}/about` },
-    { label: 'Features', path: `/${accentColor === 'purple' ? 'c2c' : 'b2b'}/features` },
-    { label: 'Blog',     path: `/${accentColor === 'purple' ? 'c2c' : 'b2b'}/blog` },
+  // All static pages are now public routes — no portal prefix needed
+  const quickLinks = [
+    { label: 'About Us', path: '/about' },
+    { label: 'Features', path: '/features' },
+    { label: 'Blog',     path: '/blog' },
   ]
-
   const supportLinks = [
-    { label: 'Help Center',      path: `/${accentColor === 'purple' ? 'c2c' : 'b2b'}/help` },
-    { label: 'Contact Us',       path: `/${accentColor === 'purple' ? 'c2c' : 'b2b'}/contact` },
-    { label: 'FAQs',             path: `/${accentColor === 'purple' ? 'c2c' : 'b2b'}/faqs` },
-    { label: 'Terms of Service', path: `/${accentColor === 'purple' ? 'c2c' : 'b2b'}/terms` },
+    { label: 'Help Center',      path: '/help' },
+    { label: 'Contact Us',       path: '/contact' },
+    { label: 'FAQs',             path: '/faqs' },
+    { label: 'Terms of Service', path: '/terms' },
   ]
-
   const bottomLinks = [
-    { label: 'Privacy Policy', path: `/${accentColor === 'purple' ? 'c2c' : 'b2b'}/privacy-policy` },
-    { label: 'Cookie Policy',  path: `/${accentColor === 'purple' ? 'c2c' : 'b2b'}/cookie-policy` },
-    { label: 'Sitemap',        path: `/${accentColor === 'purple' ? 'c2c' : 'b2b'}/sitemap` },
-  ]*/}
-  const portal = accentColor === 'purple' ? 'c2c' : accentColor === 'green' ? 'b2c' : 'b2b'
-
-const quickLinks = [
-  { label: 'About Us', path: `/${portal}/about` },
-  { label: 'Features', path: `/${portal}/features` },
-  { label: 'Blog',     path: `/${portal}/blog` },
-]
-const supportLinks = [
-  { label: 'Help Center',      path: `/${portal}/help` },
-  { label: 'Contact Us',       path: `/${portal}/contact` },
-  { label: 'FAQs',             path: `/${portal}/faqs` },
-  { label: 'Terms of Service', path: `/${portal}/terms` },
-]
-const bottomLinks = [
-  { label: 'Privacy Policy', path: `/${portal}/privacy-policy` },
-  { label: 'Cookie Policy',  path: `/${portal}/cookie-policy` },
-  { label: 'Sitemap',        path: `/${portal}/sitemap` },
-]
-
+    { label: 'Privacy Policy', path: '/privacy-policy' },
+    { label: 'Cookie Policy',  path: '/cookie-policy' },
+    { label: 'Sitemap',        path: '/sitemap' },
+  ]
 
   return (
     <footer className={`${accent.bg} text-gray-300`}>

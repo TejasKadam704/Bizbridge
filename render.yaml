@@ -1,0 +1,30 @@
+services:
+  - type: web
+    name: bizbridge-backend
+    env: python
+    region: ohio
+    plan: free
+    rootDir: backend
+    buildCommand: "./build.sh"
+    startCommand: "gunicorn config.wsgi:application"
+    envVars:
+      - key: DJANGO_ENV
+        value: prod
+      - key: SECRET_KEY
+        generateValue: true
+      - key: ALLOWED_HOSTS
+        # Vercel domain will be added here
+        value: ""
+      - key: FRONTEND_URL
+        # Vercel domain will be added here
+        value: ""
+      - key: DATABASE_URL
+        # Neon DB URL will be added here
+        value: ""
+      - key: CELERY_BROKER_URL
+        # Upstash Redis URL will be added here
+        value: ""
+      - key: RAZORPAY_KEY_ID
+        value: ""
+      - key: RAZORPAY_KEY_SECRET
+        value: ""
